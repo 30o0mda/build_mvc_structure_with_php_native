@@ -1,0 +1,9 @@
+<?php
+return[
+    'email'=>':attribute : يجب أن يكون بريد إلكتروني صالح',
+    'required'=>':attribute : اجباري',
+    'integer'=>':attribute : يجب ان يكون قيمه رقميه صحيحه',
+    'string'=>':attribute : يجب ان يكون قيمه نصيه صحيحه',
+    'numeric'=>':attribute : يجب ان يكون قيمه رقميه ',
+    'image'=>':attribute : يجب ان يكون  صوره ',
+];
