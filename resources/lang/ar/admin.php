@@ -15,6 +15,8 @@ return[
     'create' => 'اضافه ',
     'edit' => 'تعديل ',
     'delete' => 'حذف',
-    
+    'delete_message' => 'هل انت متاكد من حذف هذا العنصر؟',
+    'delete_confirmation' => 'تأكيد الحذف',
+    'cancel' => 'إلغاء الامر',
 ]
 ?>

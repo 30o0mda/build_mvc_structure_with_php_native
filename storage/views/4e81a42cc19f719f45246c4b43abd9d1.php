@@ -1,6 +1,6 @@
 <?php
 view('admin.layouts.header', ['titel' => trans('admin.categories')]);
-$categories = db_paginate('categories', "", 20);
+$categories = db_paginate('categories', "", 10);
 ?>
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <div
@@ -26,14 +26,14 @@ $categories = db_paginate('categories', "", 20);
                         <td><?php echo  $category['id'] ; ?></td>
                         <td><?php echo  $category['name'] ; ?></td>
                         <td>
-                            <img src="<?php echo storeg_url($category['icon']); ?>" style="width:60px;height:35px;"/>
-
+                            <?php echo  image(storage_url($category['icon'])) ; ?>
                         </td>
                         <td><?php echo  $category['description'] ; ?></td>
                         <td>
                             
                             <a href="<?php echo aurl('categories/show?id='.$category['id']); ?>"><i class="fa-regular fa-eye"></i></a>
                             <a href="<?php echo aurl('categories/edit?id='.$category['id']); ?>"><i class="fa-regular fa-pen-to-square"></i></a>
+                            <?php echo  delete_record(aurl('categories/delete?id='.$category['id'])) ; ?>
                         </td>
 
                     </tr>
@@ -41,6 +41,7 @@ $categories = db_paginate('categories', "", 20);
             </tbody>
         </table>
     </div>
+    <?php echo  $categories['render'] ; ?>
 </main>
 <?php
 view('admin.layouts.footer');

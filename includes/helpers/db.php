@@ -1,27 +1,28 @@
 <?php
+
 /**
  * insert data in database
  * @param string $table
  * @param array $data
  * @return array The ID of the newly created record.
  */
-if(!function_exists('db_create')){
-    function db_create(string $table,array $data)
+if (!function_exists('db_create')) {
+    function db_create(string $table, array $data)
     {
-        $sql = " INSERT INTO ".$table;
-        $columns ='';
-        $values = '';  
+        $sql = " INSERT INTO " . $table;
+        $columns = '';
+        $values = '';
         foreach ($data as $key => $value) {
             $columns .= " `$key`,";
-            $values .= "'".$value."',";
+            $values .= "'" . $value . "',";
         }
 
-        $columns = rtrim( $columns, ',');
-        $values = rtrim( $values, ',');
+        $columns = rtrim($columns, ',');
+        $values = rtrim($values, ',');
         $sql .=  " ($columns) VALUES ($values)";
-        mysqli_query($GLOBALS['connection'],$sql);
+        mysqli_query($GLOBALS['connection'], $sql);
         $id = mysqli_insert_id($GLOBALS['connection']);
-        $first = mysqli_query($GLOBALS['connection'],"select * from $table where id = ".$id);
+        $first = mysqli_query($GLOBALS['connection'], "select * from $table where id = " . $id);
         $data = mysqli_fetch_assoc($first);
         return $data;
     }
@@ -37,16 +38,16 @@ if(!function_exists('db_create')){
 if (!function_exists('db_update')) {
     function db_update(string $table, array $data, int $id)
     {
-        $sql = " update ".$table." set "  ;
-        $column_value ='';
+        $sql = " update " . $table . " set ";
+        $column_value = '';
         foreach ($data as $key => $value) {
-            $column_value .= $key."='".$value."'  ,  ";
+            $column_value .= $key . "='" . $value . "'  ,  ";
         }
-        $column_value = rtrim( $column_value, '  ,  ');
-        $sql .= $column_value. " where id = ".$id;
+        $column_value = rtrim($column_value, '  ,  ');
+        $sql .= $column_value . " where id = " . $id;
         echo $sql . "<br>";
-        mysqli_query($GLOBALS['connection'],$sql);
-        $first = mysqli_query($GLOBALS['connection'],"select * from $table where id = ".$id);
+        mysqli_query($GLOBALS['connection'], $sql);
+        $first = mysqli_query($GLOBALS['connection'], "select * from $table where id = " . $id);
         $data = mysqli_fetch_assoc($first);
         return $data;
     }
@@ -57,11 +58,11 @@ if (!function_exists('db_update')) {
  * @param string $table
  * @param int $id
  */
-if(!function_exists('db_delete')){
+if (!function_exists('db_delete')) {
     function db_delete(string $table, int $id)
     {
-    $query = mysqli_query($GLOBALS['connection'],"DELETE FROM " .$table. " WHERE id = $id");
-    return $query;
+        $query = mysqli_query($GLOBALS['connection'], "DELETE FROM " . $table . " WHERE id = $id");
+        return $query;
     }
 }
 
@@ -70,12 +71,12 @@ if(!function_exists('db_delete')){
  * @param string $table
  * @param int $id
  */
-if(!function_exists('db_find')){
-    function db_find(string $table, int $id):mixed
+if (!function_exists('db_find')) {
+    function db_find(string $table, int $id): mixed
     {
-    $query = mysqli_query($GLOBALS['connection'],"SELECT * FROM " .$table. " WHERE id = $id");
-    $result = mysqli_fetch_assoc($query);
-    return $result;
+        $query = mysqli_query($GLOBALS['connection'], "SELECT * FROM " . $table . " WHERE id = $id");
+        $result = mysqli_fetch_assoc($query);
+        return $result;
     }
 }
 
@@ -86,12 +87,12 @@ if(!function_exists('db_find')){
  * @param string $table
  * @param int $id
  */
-if(!function_exists('db_first')){
-    function db_first(string $table, string $query_str):mixed
+if (!function_exists('db_first')) {
+    function db_first(string $table, string $query_str): mixed
     {
-    $query = mysqli_query($GLOBALS['connection'],"SELECT * FROM " .$table." " .$query_str);
-    $result = mysqli_fetch_assoc($query);
-    return $result;
+        $query = mysqli_query($GLOBALS['connection'], "SELECT * FROM " . $table . " " . $query_str);
+        $result = mysqli_fetch_assoc($query);
+        return $result;
     }
 }
 
@@ -100,16 +101,16 @@ if(!function_exists('db_first')){
  * @param string $table
  * @param int $id
  */
-if(!function_exists('db_get')){
+if (!function_exists('db_get')) {
     function db_get(string $table, string $query_str): array
     {
-    $query = mysqli_query($GLOBALS['connection'],"SELECT * FROM " .$table." " .$query_str);
-    $num = mysqli_num_rows($query);
-    $GLOBALS['query'] = $query;
-    return [
-        'num' => $num,
-        'data' => $query
-    ];
+        $query = mysqli_query($GLOBALS['connection'], "SELECT * FROM " . $table . " " . $query_str);
+        $num = mysqli_num_rows($query);
+        $GLOBALS['query'] = $query;
+        return [
+            'num' => $num,
+            'data' => $query
+        ];
     }
 }
 
@@ -121,46 +122,64 @@ if(!function_exists('db_get')){
  * @param int $limit
  * @return array
  */
-if(!function_exists('render_paginate')){
-    function render_paginate(int $total_page):string
+if (!function_exists('render_paginate')) {
+    function render_paginate(int $total_page): string
     {
-        $html = '<ul>';
+        $html = '<ul class="pagination justify-content-center" dir="ltr">';
+        $p_disabled = empty(request('page')) || request('page') == 1 ? 'disabled' : '';
+        $p_number = !empty(request('page')) && is_numeric(request('page'))
+        && request('page') > 0
+        && request('page') <= $total_page ? request('page')-1 : 1;
+        $html .= '<li class="page-item">
+        <a class="page-link  ' . $p_disabled . '" href="?page=' . $p_number . '" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>';
+
         for ($i = 1; $i <= $total_page; $i++) {
-            $html .= '<li><a href="?page=' . $i . '">' . $i . '</a></li>';
+            $active = !empty(request('page')) && request('page') == $i ? 'active' : '';
+            $html .= '<li class="page-item ' . $active .'"><a href="?page=' . $i . '" class="page-link">' . $i . '</a></li>';
         }
+        $n_disabled = !empty(request('page')) && request('page') == $total_page ? 'disabled' : '';
+        $n_number = !empty(request('page')) && is_numeric(request('page'))
+        && request('page') > 0
+        && request('page') < $total_page ? request('page') + 1 : 1;
+        $html .= '<li class="page-item ' . $n_disabled . '">
+        <a class="page-link" href="?page=' . $n_number . '" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>';
         $html .= '</ul>';
         return $html;
     }
-  
 }
-if(!function_exists('db_paginate')){
-    function db_paginate(string $table, string $query_str,int $limit =15,string $orderby = 'asc'):array
+
+if (!function_exists('db_paginate')) {
+    function db_paginate(string $table, string $query_str, int $limit = 15, string $orderby = 'asc'): array
     {
-        if(isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0){
-            $Current_page = $_GET['page']-1;
-        }else{
+        if (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0) {
+            $Current_page = $_GET['page'] - 1;
+        } else {
             $Current_page = 0;
         }
 
-    $query_count = mysqli_query($GLOBALS['connection'],"SELECT COUNT(id)  FROM " .$table." " .$query_str);
-    $count = mysqli_fetch_row($query_count);
-    $total_record = $count[0];
-    $start = $Current_page * $limit ;
-    $total_page = ceil($total_record / $limit);
-    if($Current_page >= $total_page){
-        $start = $total_page + 1;
-    }
-    $query = mysqli_query($GLOBALS['connection'],"SELECT * FROM " .$table." " .$query_str." ORDER BY id ".$orderby." LIMIT {$start},{$limit}");
-    $num = mysqli_num_rows($query);
-    $GLOBALS['query'] = $query;
-    return [
-        'query' => $query,
-        'num' => $num,
-        'render' => render_paginate($total_page),
-        'current_page' => $Current_page,
-        'limit' => $limit
-    ];
+        $query_count = mysqli_query($GLOBALS['connection'], "SELECT COUNT(id)  FROM " . $table . " " . $query_str);
+        $count = mysqli_fetch_row($query_count);
+        $total_record = $count[0];
+        $start = $Current_page * $limit;
+        $total_page = ceil($total_record / $limit);
+        if ($Current_page >= $total_page) {
+            $start = $total_page + 1;
+        }
+        $query = mysqli_query($GLOBALS['connection'], "SELECT * FROM " . $table . " " . $query_str . " ORDER BY id " . $orderby . " LIMIT {$start},{$limit}");
+        $num = mysqli_num_rows($query);
+        $GLOBALS['query'] = $query;
+        return [
+            'query' => $query,
+            'num' => $num,
+            'render' => render_paginate($total_page),
+            'current_page' => $Current_page,
+            'limit' => $limit
+        ];
     }
 }
-
-

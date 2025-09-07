@@ -17,3 +17,4 @@ route_post(ADMIN.'/categories/store','controllers.admin.categories.store');
 route_get(ADMIN.'/categories/show','admin.categories.show');
 route_get(ADMIN.'/categories/edit','admin.categories.edit');
 route_post(ADMIN.'/categories/edit','controllers.admin.categories.update');
+route_post(ADMIN.'/categories/delete','controllers.admin.categories.destroy');

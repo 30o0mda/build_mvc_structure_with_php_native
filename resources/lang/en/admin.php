@@ -15,7 +15,10 @@ return[
     'create' => 'Areate ',
     'edit' => 'Edit ',
     'delete' => 'Delete',
-    
+    'delete_message' => 'Are you sure you want to delete this item?',
+    'delete_confirmation' => 'Delete Confirmation',
+    'cancel' => 'Cancel',
+
 
 
     

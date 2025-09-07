@@ -1,6 +1,6 @@
 <?php
 view('admin.layouts.header', ['titel' => trans('admin.categories')]);
-$categories = db_paginate('categories', "", 20);
+$categories = db_paginate('categories', "", 10);
 ?>
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <div
@@ -26,14 +26,14 @@ $categories = db_paginate('categories', "", 20);
                         <td>{{ $category['id'] }}</td>
                         <td>{{ $category['name'] }}</td>
                         <td>
-                            <img src="{{storeg_url($category['icon'])}}" style="width:60px;height:35px;"/>
-
+                            {{ image(storage_url($category['icon'])) }}
                         </td>
                         <td>{{ $category['description'] }}</td>
                         <td>
                             
                             <a href="{{aurl('categories/show?id='.$category['id'])}}"><i class="fa-regular fa-eye"></i></a>
                             <a href="{{aurl('categories/edit?id='.$category['id'])}}"><i class="fa-regular fa-pen-to-square"></i></a>
+                            {{ delete_record(aurl('categories/delete?id='.$category['id'])) }}
                         </td>
 
                     </tr>
@@ -41,6 +41,7 @@ $categories = db_paginate('categories', "", 20);
             </tbody>
         </table>
     </div>
+    {{ $categories['render'] }}
 </main>
 <?php
 view('admin.layouts.footer');

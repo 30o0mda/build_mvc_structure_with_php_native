@@ -45,13 +45,13 @@ redirect_if(empty($category), aurl('categories'));
                     <label for="icon">{{trans('category.icon')}}</label>
                     <input type="file" name="icon" placeholder="{{trans('category.icon')}}" class="form-control<?php echo !empty($icon) ? ' is-invalid' : ''; ?>" />
                     <!-- Button trigger modal -->
-                    <img src="{{storeg_url($category['icon'])}}" data-bs-toggle="modal" data-bs-target="#exampleModal" style="width:25px;height:25px;cursor:pointer" />
+                    <img src="{{storage_url($category['icon'])}}" data-bs-toggle="modal" data-bs-target="#exampleModal" style="width:25px;height:25px;cursor:pointer" />
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="modal-body">
-                                    <img src="{{storeg_url($category['icon'])}}" style="width:100%;height:100% ;" />
+                                    <img src="{{storage_url($category['icon'])}}" style="width:100%;height:100% ;" />
                                 </div>
                             </div>
                         </div>

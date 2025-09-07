@@ -21,20 +21,11 @@ redirect_if(empty($category), aurl('categories'));
             </div>
         </div>
         <div class="col-md-6">
-            <div clase="from-group">
+            <div class="form-group">
                 <label for="icon">{{trans('category.icon')}} : </label>
-                <!-- Button trigger modal -->
-                <img src="{{storeg_url($category['icon'])}}" data-bs-toggle="modal" data-bs-target="#exampleModal" style="width:25px;height:25px;cursor:pointer" />
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <img src="{{storeg_url($category['icon'])}}"  style="width:100%;height:100% ;" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {{image(storage_url($category['icon']))}}
+
+                
             </div>
         </div>
         <div class="col-md-24">

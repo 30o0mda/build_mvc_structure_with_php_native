@@ -17,8 +17,8 @@ if (!function_exists('storage')) {
     }
 }
 
-if (!function_exists('storeg_url')) {
-    function storeg_url(string $path = null):String
+if (!function_exists('storage_url')) {
+    function storage_url(string $path = null):String
     {
         return !empty($path) ? url('storage/' . $path) : '';
     }
@@ -27,7 +27,7 @@ if (!function_exists('storeg_url')) {
 if (!function_exists('delete_file')) {
     function delete_file($to_path)
     {
-        $path = config('files.storage_file_path') . $to_path;
+        $path = rtrim(config('files.storage_file_path'), '/').'/'.ltrim($to_path, '/');
         if (file_exists($path)) {
              unlink($path);
             return true;
