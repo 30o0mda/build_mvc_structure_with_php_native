@@ -1,6 +1,6 @@
 <!doctype html>
 <?php
-if (outh()) {
+if (auth()) {
     redirect(ADMIN);
 }
 

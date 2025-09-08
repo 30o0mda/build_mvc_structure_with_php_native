@@ -1,5 +1,5 @@
 <?php
-return[
+return [
     'email' => ' البريد الالكنروني ',
     'password' => ' كلمه المرور ',
     'login' => 'دخول',
@@ -18,5 +18,12 @@ return[
     'delete_message' => 'هل انت متاكد من حذف هذا العنصر؟',
     'delete_confirmation' => 'تأكيد الحذف',
     'cancel' => 'إلغاء الامر',
-]
-?>
+    'news' => 'الأخبار',
+    'created_at' => 'تاريخ الإنشاء',
+    'updated_at' => 'تاريخ التحديث',
+    'choose' => 'اختر',
+    'create_news' => 'أضافه خبر',
+    'save' => 'تحديث',
+    'show' => 'عرض',
+    'users' => 'المستخدمين',
+];

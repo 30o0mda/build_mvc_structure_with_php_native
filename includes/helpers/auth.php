@@ -1,8 +1,8 @@
 <?php
-if(!function_exists('outh')){
-    function outh(){
+if(!function_exists('auth')){
+    function auth(){
         if(session_has('admin')){
-            return json_decode(session('admin'));
+            return json_decode(session('admin'),true);
         }else{
             return null;
         }

@@ -22,27 +22,31 @@
             </li>
             <li class="nav-item">
               <a class="nav-link d-flex align-items-center gap-2" href="<?php echo  aurl('categories') ; ?>">
-                <svg class="bi" aria-hidden="true">
-                  <use xlink:href="#file-earmark"></use>
-                </svg>
+                <i class="fa-solid fa-list-ul"></i>
                 <?php echo  trans('admin.categories') ; ?>
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center gap-2" href="<?php echo  aurl('news') ; ?>">
+                <i class="fa-solid fa-newspaper"></i>
+                <?php echo  trans('admin.news') ; ?>
+              </a>
+            </li>
+          </ul>
             <hr class="my-3" />
             <ul class="nav flex-column mb-auto">
               <li class="nav-item">
                 <a class="nav-link d-flex align-items-center gap-2" href="#">
-                  <svg class="bi" aria-hidden="true">
-                    <use xlink:href="#gear-wide-connected"></use>
-                  </svg>
+                  <i class="fa-solid fa-screwdriver-wrench"></i>
                   Settings
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link d-flex align-items-center gap-2" href="<?php echo  url('admin/logout') ; ?>">
-                  <svg class="bi" aria-hidden="true">
+                  <!-- <svg class="bi" aria-hidden="true">
                     <use xlink:href="#door-closed"></use>
-                  </svg>
+                  </svg> -->
+                  <i class="fa-solid fa-arrow-right-from-bracket"></i>
                   <?php echo  trans ('admin.logout') ; ?>
                 </a>
               </li>

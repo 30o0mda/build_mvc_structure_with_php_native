@@ -109,7 +109,7 @@ if (!function_exists('db_get')) {
         $GLOBALS['query'] = $query;
         return [
             'num' => $num,
-            'data' => $query
+            'query' => $query
         ];
     }
 }

@@ -1,5 +1,5 @@
 <?php
-return[
+return [
     'email' => ' Email Address ',
     'password' => 'Password ',
     'login' => 'Login',
@@ -18,9 +18,14 @@ return[
     'delete_message' => 'Are you sure you want to delete this item?',
     'delete_confirmation' => 'Delete Confirmation',
     'cancel' => 'Cancel',
-
-
-
+    'news' => 'News',
+    'created_at' => 'Created At',
+    'updated_at' => 'Updated At',
+    'choose' => 'Choose',
+    'create_news' => 'Create News',
+    'save' => 'Save',
+    'show' => 'Show',
+    'users' => 'Users',
     
-]
-?>
+
+];

@@ -6,7 +6,7 @@ $categories = db_paginate('categories', "", 10);
     <div
         class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h2>{{ trans('admin.categories') }}</h2>
-        <a class="btn btn-primary" href="{{aurl('categories/create')}}">{{ trans('category.create') }}</a>
+        <a class="btn btn-primary" href="{{aurl('categories/create')}}"><i class="fa-solid fa-plus"></i>{{ trans('category.create') }}</a>
     </div>
     <div
         class="table-responsive small">

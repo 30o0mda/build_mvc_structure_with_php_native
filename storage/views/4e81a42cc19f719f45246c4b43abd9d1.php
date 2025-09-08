@@ -6,7 +6,7 @@ $categories = db_paginate('categories', "", 10);
     <div
         class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h2><?php echo  trans('admin.categories') ; ?></h2>
-        <a class="btn btn-primary" href="<?php echo aurl('categories/create'); ?>"><?php echo  trans('category.create') ; ?></a>
+        <a class="btn btn-primary" href="<?php echo aurl('categories/create'); ?>"><i class="fa-solid fa-plus"></i><?php echo  trans('category.create') ; ?></a>
     </div>
     <div
         class="table-responsive small">
