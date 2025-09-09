@@ -7,7 +7,6 @@ if (!function_exists('validation')) {
         $validation = [];
         $values = [];
         foreach ($attributes as $attribute => $rules) {
-
             $value = request($attribute);
             $values[$attribute] = $value;
             // if ($attribute == 'icon') {
@@ -15,7 +14,6 @@ if (!function_exists('validation')) {
             // global $validation;
             $attribute_validate = [];
             $final_attribute = isset($trans[$attribute]) ? $trans[$attribute] : $attribute;
-
             foreach (explode('|', $rules) as $rule) {
                 if ($rule == 'email' && !filter_var($value, FILTER_VALIDATE_EMAIL)) {
                     $attribute_validate[] = str_replace(':attribute', $final_attribute, trans('validation.email'));
@@ -31,6 +29,30 @@ if (!function_exists('validation')) {
                     $attribute_validate[] = str_replace(':attribute', $final_attribute, trans('validation.numeric'));
                 } elseif ($rule == 'image' && (!isset($value['tmp_name']) || empty($value['tmp_name']) || getimagesize($value['tmp_name']) === false)) {
                     $attribute_validate[] = str_replace(':attribute', $final_attribute, trans('validation.image'));
+                } elseif (preg_match('/^unique:/i', $rule)) {
+                    $ex_rule = explode(':', $rule);
+                    if (count($ex_rule) > 1 && isset($ex_rule[1])) {
+                        $get_unique_info = explode(',', $ex_rule[1]);
+                        $table = $get_unique_info[0];
+                        $column = isset($get_unique_info[1]) ? $get_unique_info[1] : $attribute;
+                        if (isset($get_unique_info[2])) {
+                            $sql = "where " . $column . " = '" . $value . "' and id !=' " . $get_unique_info[2] . "'";
+                        } else {
+                            $sql = "where " . $column . " = '" . $value . "' and id !=' " . $get_unique_info[2] . "'";
+                        }
+                        $check_unique_db = db_first($table, $sql);
+                        if (!empty($check_unique_db)) {
+                            $attribute_validate[] = str_replace(':attribute', $final_attribute, trans('validation.unique'));
+                        }
+                    }
+                } elseif (preg_match('/^in:/i', $rule)) {
+                    $ex_rule = explode(':', $rule);
+                    if (isset($ex_rule[1])) {
+                        $ex_in = explode(',', $ex_rule[1]);
+                        if (!empty($ex_in) && is_array($ex_in) && !in_array($value, $ex_in)) {
+                            $attribute_validate[] = str_replace(':attribute', $final_attribute, trans('validation.in'));
+                        }
+                    }
                 }
             }
             if (!empty($attribute_validate) && is_array($attribute_validate) && count($attribute_validate) > 0) {
@@ -54,6 +76,7 @@ if (!function_exists('validation')) {
         }
     }
 }
+
 
 
 if (!function_exists('any_error')) {

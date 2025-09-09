@@ -36,3 +36,16 @@ route_get(ADMIN.'/news/show','admin.news.show');
 route_get(ADMIN.'/news/edit','admin.news.edit');
 route_post(ADMIN.'/news/edit','controllers.admin.news.update');
 route_post(ADMIN.'/news/delete','controllers.admin.news.destroy');
+
+//users crud
+// c for create
+// r for read
+// u for update
+// d for delete
+route_get(ADMIN.'/users','admin.users.index');
+route_get(ADMIN.'/users/create','admin.users.create');
+route_post(ADMIN.'/users/store','controllers.admin.users.store');
+route_get(ADMIN.'/users/show','admin.users.show');
+route_get(ADMIN.'/users/edit','admin.users.edit');
+route_post(ADMIN.'/users/edit','controllers.admin.users.update');
+route_post(ADMIN.'/users/delete','controllers.admin.users.destroy');

@@ -6,4 +6,6 @@ return[
 'string'=>':attribute : Must be a valid text value',
 'numeric'=>':attribute : Must be a numeric value',
 'image'=>':attribute : Must be a picture ',
+'unique'=>':attribute : Already exists',
+'in'=>':attribute : Invalid value ',
 ];

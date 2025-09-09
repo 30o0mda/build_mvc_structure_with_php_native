@@ -1,11 +1,14 @@
 <?php
 
 return [
-    'title' => 'العنوان',
-    'user_id' => 'معرف المستخدم',
-    'category_id' => 'معرف الفئة',
-    'image' => 'صورة',
-    'description' => 'وصف',
-    'content' => 'محتوى',
+    'title' => 'Title',
+    'user_id' => 'User ID',
+    'category_id' => 'Category ID',
+    'image' => 'Image',
+    'description' => 'Description',
+    'content' => 'Content',
+    'user_name' => 'User Name',
+    'category_name' => 'Category Name',
+    'show' => 'Show News',
 ];
 

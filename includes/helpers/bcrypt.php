@@ -1,7 +1,7 @@
 <?php
 if(!function_exists('bcrypt')){
     function bcrypt(string $password):string{
-        return password_hash($password, PASSWORD_BCRYPT);
+        return password_hash($password,PASSWORD_BCRYPT);
     }
 }
 if(!function_exists('hash_check')){

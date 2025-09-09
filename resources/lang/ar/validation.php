@@ -6,5 +6,7 @@ return[
     'string'=>':attribute : يجب ان يكون قيمه نصيه صحيحه',
     'numeric'=>':attribute : يجب ان يكون قيمه رقميه ',
     'image'=>':attribute : يجب ان يكون  صوره ',
+    'unique'=>':attribute : موجود مسبقا',
+    'in'=>':attribute : قيمه غير موجوده ',
     
 ];

@@ -25,8 +25,8 @@ if (!empty($data['image']['tmp_name'])) {
     unset($data['image']);
 }
 $data['user_id'] = auth()['id'];
-// $data['created_at'] = date("Y-m-d H:i:s");
+// $data['created_at'] = $news['created_at'];
 $data['updated_at'] = date("Y-m-d H:i:s");
 db_update('news', $data, request('id'));
 session_flash('old');
-redirect(aurl('news/edit?id=' . request('id')));
+redirect(aurl('news' . '?id=' . request('id')));

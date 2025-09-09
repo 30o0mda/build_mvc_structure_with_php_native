@@ -1,6 +1,19 @@
 <?php
 view('admin.layouts.header', ['titel' => trans('admin.news')]);
-$news_list = db_paginate('news', "", 10);
+
+$news_list = db_paginate('news', "join users on news.user_id = users.id 
+join categories on news.category_id = categories.id", 12,"asc","
+news.title,
+news.id,
+news.image,
+news.description,
+news.content,
+news.created_at,
+news.updated_at,
+news.category_id,
+news.user_id,
+users.name as username,
+categories.name as category_name");
 ?>
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <div
@@ -28,8 +41,12 @@ $news_list = db_paginate('news', "", 10);
                     <tr>
                         <td>{{ $news['id'] }}</td>
                         <td>{{ $news['title'] }}</td>
-                        <td>{{ $news['user_id'] }}</td>
-                        <td>{{ $news['category_id'] }}</td>
+                        <td>
+                            <a href="{{aurl('users/show?id='.$news['user_id'])}}">{{ $news['username'] }}</a>
+                        </td>
+                        <td>
+                            <a href="{{aurl('categories/show?id='.$news['category_id'])}}">{{ $news['category_name'] }}</a>
+                        </td>
                         <td>
                             {{ image(storage_url($news['image'])) }}
                         </td>

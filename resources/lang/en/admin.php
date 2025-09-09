@@ -12,7 +12,7 @@ return [
     'categories' => 'Categories',
     'dashboard ' => 'Dashboard ',
     'action' => 'Action',
-    'create' => 'Areate ',
+    'create' => 'Create ',
     'edit' => 'Edit ',
     'delete' => 'Delete',
     'delete_message' => 'Are you sure you want to delete this item?',
@@ -26,6 +26,7 @@ return [
     'save' => 'Save',
     'show' => 'Show',
     'users' => 'Users',
+    'create' => 'Create',
     
 
 ];

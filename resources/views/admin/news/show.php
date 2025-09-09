@@ -1,6 +1,22 @@
 <?php
 view('admin.layouts.header', ['titel' => trans('admin.news').' - '.trans('news.show')]);
-$news = db_find('news', request('id'));
+
+//  request('id');
+$news = db_first('news',"join users on news.user_id = users.id 
+join categories on news.category_id = categories.id
+where news.id = ".request('id'),"
+news.title,
+news.id,
+news.image,
+news.description,
+news.content,
+news.category_id,
+news.user_id,
+users.name as username,
+categories.name as category_name");
+// echo "<pre>";
+// var_dump($news);
+
 redirect_if(empty($news), aurl('news'));
 
 ?>
@@ -23,15 +39,19 @@ redirect_if(empty($news), aurl('news'));
          <div class="col-md-6">
             <div class="form-group">
                 <label for="category_id">{{trans('news.category_id')}}</label>
-                : {{$news['category_id']}}
+                : <a href="{{aurl('categories/show?id='.$news['category_id'])}}">{{ $news['category_name'] }}</a>
+            </div>
+        </div>
+                <div class="col-md-6">
+            <div class="form-group">
+                <label for="image">{{trans('news.image')}} : </label>
+                {{image(storage_url($news['image']))}}
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label for="image">{{trans('news.image')}} : </label>
-                {{image(storage_url($news['image']))}}
-
-                
+                <label for="user_id">{{trans('news.user_id')}}</label>
+                : <a href="{{aurl('users/show?id='.$news['user_id'])}}">{{ $news['username'] }}</a>
             </div>
         </div>
         <div class="col-md-24">
