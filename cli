@@ -1,0 +1,16 @@
+<?php
+//$argv = $_SERVER['argv'];
+// if (php_sapi_name() !== 'cli') {
+    $str =  $_SERVER['argv'];
+    if ($str[1] == 'view:clear') {
+        $path = 'storage/views';
+        $files = glob($path . '/*'); // get all file names
+        foreach ($files as $file) { // iterate files
+            if (file_exists($file)) {
+                // Clear the contents of the file
+                unlink($file); // delete file
+            }
+        }
+        echo "View cache cleared successfully".PHP_EOL;
+    }
+// }

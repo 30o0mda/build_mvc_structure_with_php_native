@@ -29,4 +29,5 @@ $data['user_id'] = auth()['id'];
 $data['updated_at'] = date("Y-m-d H:i:s");
 db_update('news', $data, request('id'));
 session_flash('old');
+session('success', trans('admin.edited'));
 redirect(aurl('news' . '?id=' . request('id')));

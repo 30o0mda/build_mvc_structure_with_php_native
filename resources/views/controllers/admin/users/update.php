@@ -24,4 +24,5 @@ $data['password'] = bcrypt($data['password']);
 
 db_update('users', $data, request('id'));
 session_forget('old');
+session('success', trans('admin.edited'));
 redirect(aurl('users' . '?id=' . request('id')));

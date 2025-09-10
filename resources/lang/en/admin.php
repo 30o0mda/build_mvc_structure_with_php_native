@@ -27,6 +27,12 @@ return [
     'show' => 'Show',
     'users' => 'Users',
     'create' => 'Create',
+    'success' => 'Success',
+    'success_message' => 'The Operation Done Successfully',
+    'added' => 'Added Successfully',
+    'edited' => 'Edited Successfully',
+    'deleted' => 'Deleted Successfully',
+    
     
 
 ];

@@ -37,6 +37,7 @@ dir="<?php echo $dir ?>" data-bs-theme="auto">
     <link href="{{url('assets/admin')}}/css/style.css" rel="stylesheet" />
     <link href="{{url('assets/admin')}}/css/headers.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
     <script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
     <style>
       .ck-editor__editable[role="textbox"] {
@@ -160,6 +161,7 @@ dir="<?php echo $dir ?>" data-bs-theme="auto">
 <!-- Dark & white -->
   <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
     <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button"
+    style="direction: ltr;"
       aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
       <svg class="bi my-1 theme-icon-active" aria-hidden="true">
         <use href="#circle-half"></use>
@@ -210,3 +212,14 @@ dir="<?php echo $dir ?>" data-bs-theme="auto">
 view('admin.layouts.navbar');
 view('admin.layouts.sidebar');
 ?>
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+@if(any_error())
+    <div class="alert alert-danger">
+        <ol>
+            @foreach(all_errors() as $error)
+            <li> <?php echo $error ?> </li>
+            @endforeach
+        </ol>
+    </div>
+    @endif

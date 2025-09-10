@@ -15,7 +15,6 @@ news.user_id,
 users.name as username,
 categories.name as category_name");
 ?>
-<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <div
         class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h2>{{ trans('admin.news') }}</h2>
@@ -66,7 +65,6 @@ categories.name as category_name");
         </table>
     </div>
     {{ $news_list['render'] }}
-</main>
 <?php
 view('admin.layouts.footer');
 ?>

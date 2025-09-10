@@ -5,5 +5,5 @@ if(!empty($category['image'])) {
     delete_file($category['image']);
 }
 db_delete('news', request('id'));
-
+session('success', trans('admin.deleted'));
 redirect(aurl('news'));

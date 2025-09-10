@@ -23,4 +23,5 @@ $data['created_at'] = date("Y-m-d H:i:s");
 $data['updated_at'] = date("Y-m-d H:i:s");
 db_create('news',$data);
 session_flash('old');
+session('success', trans('admin.added'));
 redirect(aurl('news'));

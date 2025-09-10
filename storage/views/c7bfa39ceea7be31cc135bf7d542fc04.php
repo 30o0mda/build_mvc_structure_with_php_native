@@ -22,7 +22,6 @@ view('layout.header', ['title' =>trans('main.home')]);
     end_errors();
  ?>
 
-<?php echo  url('uploade') ; ?>
 <br>
 <a href="<?php echo url('storage/images/img.png'); ?>">download</a>
 

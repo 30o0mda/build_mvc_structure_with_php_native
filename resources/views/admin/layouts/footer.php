@@ -1,4 +1,39 @@
-   </div>
+</main>
 </div>
-<script src="{{url('assets/admin')}}/assets/dist/js/bootstrap.bundle.min.js" class="astro-vvvwv3sm"></script>
+</div>
+<script src="{{url('assets/admin')}}/assets/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> <!-- -->
+<script></script>
+<script>
+   $(document).ready(function() {
+      toastr.options = {
+         "closeButton": false,
+         "debug": false,
+         "newestOnTop": false,
+         "progressBar": false,
+         "positionClass": "<?php echo (session_has('locale') && session('locale') == 'ar')
+                              ? 'toast-bottom-right'
+                              : 'toast-bottom-left'; ?>",
+         "preventDuplicates": false,
+         "onclick": null,
+         "showDuration": "300",
+         "hideDuration": "1000",
+         "timeOut": "5000",
+         "extendedTimeOut": "1000",
+         "showEasing": "swing",
+         "hideEasing": "linear",
+         "showMethod": "fadeIn",
+         "hideMethod": "fadeOut"
+      };
+
+      <?php if (session_has('success')): ?>
+         toastr.success(" {{ session_flash('success') }}", " {{ trans('admin.success') }}");
+      <?php endif; ?>
+   });
+</script>
+
 </html>
+@php
+end_errors();
+@endphp

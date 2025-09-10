@@ -20,5 +20,5 @@ $data['icon'] = store_file($data['icon'], 'categories/' . file_ext($data['icon']
 // var_dump($data);
 
 db_update('categories', $data, request('id'));
-
+session('success', trans('admin.edited'));
 redirect(aurl('categories' . '?id=' . request('id')));

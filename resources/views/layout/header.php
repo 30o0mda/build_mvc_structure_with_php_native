@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <?php
-// var_dump(session_has('locale'));
-// var_dump(session('locale'));
 if(session_has('locale')){
     $dir =session('locale') == 'ar'?'rtl':'ltr';
     $lang = session('locale');

@@ -2,7 +2,6 @@
 view('admin.layouts.header', ['titel' => trans('admin.categories')]);
 $categories = db_paginate('categories', "", 10);
 ?>
-<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <div
         class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h2>{{ trans('admin.categories') }}</h2>
@@ -42,7 +41,6 @@ $categories = db_paginate('categories', "", 10);
         </table>
     </div>
     {{ $categories['render'] }}
-</main>
 <?php
 view('admin.layouts.footer');
 ?>
