@@ -1,4 +1,5 @@
-        <?php echo  view('front.layout.header') ; ?>
+        <?php echo  view('front.layout.header', ['title' => trans('main.home')]) ; ?>
+
         <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
             <div class="col-lg-6 px-0">
                 <h1 class="display-4 fst-italic">
@@ -19,7 +20,7 @@
                 <div
                     class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                     <div class="col p-4 d-flex flex-column position-static">
-                        <strong class="d-inline-block mb-2 text-primary-emphasis">World</strong>
+                        <!-- <strong class="d-inline-block mb-2 text-primary-emphasis">World</strong> -->
                         <h3 class="mb-0">Featured post</h3>
                         <div class="mb-1 text-body-secondary">Nov 12</div>
                         <p class="card-text mb-auto">

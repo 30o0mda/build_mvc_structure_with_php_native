@@ -144,21 +144,16 @@
              </div>
          </div>
      </header>
-     <div class="nav-scroller py-1 mb-3 border-bottom">
+     <div class="nav-scroller py-1 mb-3">
          <nav class="nav nav-underline justify-content-between">
-             <a class="nav-item nav-link link-body-emphasis active" href="#">World</a>
-             <a class="nav-item nav-link link-body-emphasis" href="#">U.S.</a>
-             <a class="nav-item nav-link link-body-emphasis" href="#">Technology</a>
-             <a class="nav-item nav-link link-body-emphasis" href="#">Design</a>
-             <a class="nav-item nav-link link-body-emphasis" href="#">Culture</a>
-             <a class="nav-item nav-link link-body-emphasis" href="#">Business</a>
-             <a class="nav-item nav-link link-body-emphasis" href="#">Politics</a>
-             <a class="nav-item nav-link link-body-emphasis" href="#">Opinion</a>
-             <a class="nav-item nav-link link-body-emphasis" href="#">Science</a>
-             <a class="nav-item nav-link link-body-emphasis" href="#">Health</a>
-             <a class="nav-item nav-link link-body-emphasis" href="#">Style</a>
-             <a class="nav-item nav-link link-body-emphasis" href="#">Travel</a>
+             <a class="nav-item nav-link link-body-emphasis <?php echo empty(request('category_id')) ? ' active' : ''; ?>" href="<?php echo  url('tasks') ; ?>"><?php echo  trans('main.home') ; ?></a>
+             <?php
+                $nav_categories = db_get('categories', "order by id desc limit 10");
+                while ($rows = mysqli_fetch_assoc($nav_categories['query'])): ?>
+                 <a class="nav-item nav-link link-body-emphasis<?php echo !empty(request('category_id')) && request('category_id') == $rows['id'] ? ' active' : ''; ?>" href="<?php echo  url('category?category_id='.$rows['id']) ; ?>"><?php echo $rows['name']; ?></a>
+             <?php endwhile; ?>
          </nav>
      </div>
+
  </div>
  <main class="container">

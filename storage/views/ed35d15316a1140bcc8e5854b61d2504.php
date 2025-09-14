@@ -7,4 +7,4 @@ if(in_array(request('lang'), ['ar','en'])) {
 
 }
 
-redirect('tasks');
+redirect(back());

@@ -13,6 +13,9 @@ return [
     'FAQs'=> 'FAQs ',
     'About'=> ' About',
     'Home Page' => 'Home Page ',
+    'sitename' => 'The News',
+    'continue_reading' => 'Continue Reading...',
+
 
 
 ];

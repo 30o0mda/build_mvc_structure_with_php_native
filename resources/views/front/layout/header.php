@@ -18,16 +18,17 @@ if (session_has('locale')) {
         name="author"
         content="Mark Otto, Jacob Thornton, and Bootstrap contributors" />
     <meta name="generator" content="Astro v5.13.2" />
-    <title>Blog Template · Bootstrap v5.3</title>
+    <title> {{ trans('main.sitename') }} {{ !empty($title)?' - ' . $title:'' }}</title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
     <link
         rel="canonical"
         href="https://getbootstrap.com/docs/5.3/examples/blog/" />
     <script src="{{ url('assets/front') }}/js/color-modes.js"></script>
-    <link href="{{ url('assets/front') }}/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="{{ url('assets/front') }}/dist/css/bootstrap.css" rel="stylesheet" />
     <meta name="theme-color" content="#712cf9" />
 <?php if (session('locale') == 'ar'): ?>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.rtl.min.css">
-        <link  href="{{url('assets/front')}}/dist/css/blog.rtl.min.css" rel="stylesheet" />
+        <link  href="{{url('assets/front')}}/dist/css/blog.rtl.css" rel="stylesheet" />
     <?php else: ?>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
         <link href="{{url('assets/front')}}/dist/css/blog.css" rel="stylesheet" />
@@ -35,8 +36,8 @@ if (session_has('locale')) {
     <link
         href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900&display=swap"
         rel="stylesheet" />
-    
-    <link href="{{ 'assets/front'}}/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="{{ url('assets/front') }}/dist/css/bootstrap.min.css" rel="stylesheet" />
 
     <style>
         .bd-placeholder-img {
