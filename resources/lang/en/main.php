@@ -15,6 +15,17 @@ return [
     'Home Page' => 'Home Page ',
     'sitename' => 'The News',
     'continue_reading' => 'Continue Reading...',
+    'name' => 'Name',
+    'email' => 'Email',
+    'comment' => 'Comment',
+    'write_comment' => 'Write your comment here ...',
+    'add' => 'Add',
+    'mobile' => 'Mobile',
+    'address'=> 'Address',
+    'comments' => 'Comments',
+    'no_comments' => 'No Comments',
+    'news_id' => 'News',
+
 
 
 

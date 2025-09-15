@@ -53,6 +53,22 @@ if (!function_exists('validation')) {
                             $attribute_validate[] = str_replace(':attribute', $final_attribute, trans('validation.in'));
                         }
                     }
+                } elseif (preg_match('/^exists:/i', $rule)) {
+                    $ex_rule = explode(':', $rule);
+                    if (count($ex_rule) > 1 && isset($ex_rule[1])) {
+                        $get_exists_info = explode(',', $ex_rule[1]);
+                        $table = $get_exists_info[0];
+                        $column = isset($get_exists_info[1]) ? $get_exists_info[1] : $attribute;
+                        if (isset($get_exists_info[2])) {
+                            $sql = "where " . $column . " = '" . $value .  "'";
+                        } else {
+                            $sql = "where id='" . $value .  "'";
+                        }
+                        $check_exists_db = db_first($table, $sql);
+                        if (empty($check_exists_db)) {
+                            $attribute_validate[] = str_replace(':attribute', $final_attribute, trans('validation.exists'));
+                        }
+                    }
                 }
             }
             if (!empty($attribute_validate) && is_array($attribute_validate) && count($attribute_validate) > 0) {
@@ -69,7 +85,9 @@ if (!function_exists('validation')) {
                     back();
                 }
             } elseif ($http_header == 'api') {
-                return json_encode($validation, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+                header('content-type: application/json; charset=utf-8');
+                http_response_code(422);
+                echo json_encode($validation, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
             }
         } else {
             return $values;

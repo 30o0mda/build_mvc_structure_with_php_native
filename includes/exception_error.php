@@ -10,6 +10,7 @@ if(!isset($_POST['_method']) && !is_null(segment()) && !in_array(segment(), arra
     // if(preg_match('/^storage/i', $storage_segment)){
     //     storage($storage_segment);
     // }else{
+        http_response_code(404);
         view('404');
         exit();
     // }

@@ -7,5 +7,6 @@ return[
 'numeric'=>':attribute : Must be a numeric value',
 'image'=>':attribute : Must be a picture ',
 'unique'=>':attribute : Already exists',
+'exists'=>':attribute : Not found in our records',
 'in'=>':attribute : Invalid value ',
 ];

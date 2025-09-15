@@ -38,6 +38,7 @@ if (session_has('locale')) {
         rel="stylesheet" />
 
     <link href="<?php echo  url('assets/front') ; ?>/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="<?php echo  url('assets/front') ; ?>/dist/css/hawam.css" rel="stylesheet" />
 
     <style>
         .bd-placeholder-img {
@@ -123,6 +124,8 @@ if (session_has('locale')) {
             display: block !important;
         }
     </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
 </head>
 <?php
 view('front.layout.navbar');

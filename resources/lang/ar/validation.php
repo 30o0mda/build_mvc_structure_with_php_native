@@ -7,6 +7,7 @@ return[
     'numeric'=>':attribute : يجب ان يكون قيمه رقميه ',
     'image'=>':attribute : يجب ان يكون  صوره ',
     'unique'=>':attribute : موجود مسبقا',
+    'exists'=>':attribute :    غير موجوده في سجلاتنا',
     'in'=>':attribute : قيمه غير موجوده ',
     
 ];

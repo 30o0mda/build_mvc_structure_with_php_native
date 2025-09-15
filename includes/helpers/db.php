@@ -123,29 +123,36 @@ if (!function_exists('db_get')) {
  * @return array
  */
 if (!function_exists('render_paginate')) {
-    function render_paginate(int $total_page): string
+    function render_paginate(int $total_page,$appends): string
     {
+        $request_str='';
+        if(!empty($appends) && count($appends) > 0){
+            foreach($appends as$k=>$val){
+                $request_str .= $k.'='.$val.'&';
+            }
+        }
+        $request_str .='page=';
         $html = '<ul class="pagination justify-content-center" dir="ltr">';
         $p_disabled = empty(request('page')) || request('page') == 1 ? 'disabled' : '';
         $p_number = !empty(request('page')) && is_numeric(request('page'))
         && request('page') > 0
         && request('page') <= $total_page ? request('page')-1 : 1;
         $html .= '<li class="page-item">
-        <a class="page-link  ' . $p_disabled . '" href="?page=' . $p_number . '" aria-label="Previous">
+        <a class="page-link  ' . $p_disabled . '" href="?'.$request_str . $p_number . '" aria-label="Previous">
             <span aria-hidden="true">&laquo;</span>
             </a>
         </li>';
 
         for ($i = 1; $i <= $total_page; $i++) {
             $active = !empty(request('page')) && request('page') == $i ? 'active' : '';
-            $html .= '<li class="page-item ' . $active .'"><a href="?page=' . $i . '" class="page-link">' . $i . '</a></li>';
+            $html .= '<li class="page-item ' . $active .'"><a href="?'.$request_str . $i . '" class="page-link">' . $i . '</a></li>';
         }
         $n_disabled = !empty(request('page')) && request('page') == $total_page ? 'disabled' : '';
         $n_number = !empty(request('page')) && is_numeric(request('page'))
         && request('page') > 0
         && request('page') < $total_page ? request('page') + 1 : 1;
         $html .= '<li class="page-item ' . $n_disabled . '">
-        <a class="page-link" href="?page=' . $n_number . '" aria-label="Next">
+        <a class="page-link" href="?'.$request_str . $n_number . '" aria-label="Next">
             <span aria-hidden="true">&raquo;</span>
             </a>
         </li>';
@@ -155,7 +162,7 @@ if (!function_exists('render_paginate')) {
 }
 
 if (!function_exists('db_paginate')) {
-    function db_paginate(string $table, string $query_str, int $limit = 15, string $orderby = 'asc', string $select = '*'): array
+    function db_paginate(string $table, string $query_str, int $limit = 15, string $orderby = 'asc', string $select = '*',array $appends =  null): array
     {
         if (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0) {
             $Current_page = $_GET['page'] - 1;
@@ -177,7 +184,7 @@ if (!function_exists('db_paginate')) {
         return [
             'query' => $query,
             'num' => $num,
-            'render' => render_paginate($total_page),
+            'render' => render_paginate($total_page,$appends),
             'current_page' => $Current_page,
             'limit' => $limit
         ];

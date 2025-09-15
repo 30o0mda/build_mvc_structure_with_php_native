@@ -1,0 +1,18 @@
+[type=email], [type=number], [type=tel], [type=url] {
+    /* direction: ltr; */
+
+    &::-webkit-input-placeholder {
+        text-align: right;
+    }
+}
+
+html[dir="ltr"] {
+    [type=email], [type=number], [type=tel], [type=url] {
+    /* direction: ltr; */
+
+    &::-webkit-input-placeholder {
+        text-align: left;
+    }
+}
+}
+
