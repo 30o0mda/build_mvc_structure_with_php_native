@@ -1,6 +1,18 @@
 <?php
 view('admin.layouts.header', ['titel' => trans('admin.comments') . ' - ' . trans('comment.edit')]);
-$comment = db_find('comments', request('id'));
+// $comment = db_find('comments', request('id'));
+$comment = db_first(
+    'comments',
+    "join news on comments.news_id = news.id
+     where comments.id = " . request('id'),"
+    comments.id,
+    comments.name,
+    comments.email,
+    comments.status,
+    comments.comment,
+    comments.news_id,
+    news.title as title
+");
 redirect_if(empty($comment), aurl('comments'));
 ?>
 <div
@@ -29,7 +41,7 @@ redirect_if(empty($comment), aurl('comments'));
         <div class="col-md-6">
             <div class="form-group">
                 <label for="news">{{trans('comment.news')}}</label>
-                <a href="{{aurl('news/show?id='.$comment['news_id'])}}">{{$comment['news_id']}}</a>
+                <a href="{{aurl('news/show?id='.$comment['news_id'])}}" target="_blank">{{$comment['title']}}</a>
             </div>
         </div>
         <div class="col-md-6">

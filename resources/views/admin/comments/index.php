@@ -1,6 +1,17 @@
 <?php
 view('admin.layouts.header', ['titel' => trans('admin.comments')]);
-$comments = db_paginate('comments', "", 10);
+
+$comments = db_paginate('comments', "join news on comments.news_id = news.id ", 12,"asc","
+comments.id,
+comments.name,
+comments.email,
+comments.status,
+comments.comment,
+news.id as news_id,
+news.title as title
+");
+
+// $comments = db_paginate('comments', "", 10);
 ?>
     <div
         class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -24,7 +35,7 @@ $comments = db_paginate('comments', "", 10);
                 <?php while ($comment = mysqli_fetch_assoc($comments['query'])): ?>
                     <tr>
                         <td>{{ $comment['id'] }}</td>
-                        <td>{{ $comment['news_id'] }}</td>
+                        <td>{{ $comment['title'] }}</td>
                         <td>{{ $comment['name'] }}</td>
                         <td>{{ $comment['email'] }}</td>
                         <td>{{ $comment['comment'] }}</td>
