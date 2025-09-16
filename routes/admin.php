@@ -23,6 +23,20 @@ route_get(ADMIN.'/categories/edit','admin.categories.edit');
 route_post(ADMIN.'/categories/edit','controllers.admin.categories.update');
 route_post(ADMIN.'/categories/delete','controllers.admin.categories.destroy');
 
+//comment crud
+// c for create
+// r for read
+// u for update
+// d for delete
+route_get(ADMIN.'/comments','admin.comments.index');
+route_get(ADMIN.'/comments/create','admin.comments.create');
+route_post(ADMIN.'/comments/store','controllers.admin.comments.store');
+route_get(ADMIN.'/comments/show','admin.comments.show');
+route_get(ADMIN.'/comments/edit','admin.comments.edit');
+route_post(ADMIN.'/comments/edit','controllers.admin.comments.update');
+route_post(ADMIN.'/comments/delete','controllers.admin.comments.destroy');
+
+
 
 //news crud
 // c for create

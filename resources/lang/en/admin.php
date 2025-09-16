@@ -32,6 +32,8 @@ return [
     'added' => 'Added Successfully',
     'edited' => 'Edited Successfully',
     'deleted' => 'Deleted Successfully',
+    'comments' => 'Comments',
+
     
     
 

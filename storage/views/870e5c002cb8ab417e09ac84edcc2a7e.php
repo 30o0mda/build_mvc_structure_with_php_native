@@ -33,6 +33,12 @@
               </a>
             </li>
             <li class="nav-item">
+              <a class="nav-link d-flex align-items-center gap-2" href="<?php echo  aurl('comments') ; ?>">
+                <i class="fa-solid fa-comment"></i>
+                <?php echo  trans('admin.comments') ; ?>
+              </a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link d-flex align-items-center gap-2" href="<?php echo  aurl('users') ; ?>">
                 <i class="fa-solid fa-users"></i>
                 <?php echo  trans('admin.users') ; ?>

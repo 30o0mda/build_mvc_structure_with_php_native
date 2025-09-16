@@ -85,9 +85,7 @@ if (!function_exists('validation')) {
                     back();
                 }
             } elseif ($http_header == 'api') {
-                header('content-type: application/json; charset=utf-8');
-                http_response_code(422);
-                echo json_encode($validation, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+                response($validation,422);
             }
         } else {
             return $values;

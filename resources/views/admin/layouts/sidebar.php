@@ -33,6 +33,12 @@
               </a>
             </li>
             <li class="nav-item">
+              <a class="nav-link d-flex align-items-center gap-2" href="{{ aurl('comments') }}">
+                <i class="fa-solid fa-comment"></i>
+                {{ trans('admin.comments') }}
+              </a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link d-flex align-items-center gap-2" href="{{ aurl('users') }}">
                 <i class="fa-solid fa-users"></i>
                 {{ trans('admin.users') }}

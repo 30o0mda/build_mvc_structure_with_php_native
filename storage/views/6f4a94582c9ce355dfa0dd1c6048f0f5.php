@@ -1,0 +1,49 @@
+<?php
+view('admin.layouts.header', ['titel' => trans('admin.comments') . ' - ' . trans('comment.show')]);
+$comment = db_find('comments', request('id'));
+redirect_if(empty($comment), aurl('comments'));
+
+?>
+<div
+    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h2><?php echo  trans('admin.comments') ; ?> - <?php echo  trans('comment.show') ; ?> : <?php echo $comment['name']; ?></h2>
+    <a class="btn btn-info" href="<?php echo aurl('comments'); ?>"><?php echo  trans('comment.comments') ; ?></a>
+</div>
+
+
+
+<div class="row">
+    <div class="col-md-6">
+        <div clase="from-group">
+            <label for="name"><?php echo trans('comment.name'); ?></label>
+            : <?php echo $comment['name']; ?>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div clase="from-group">
+            <label for="email"><?php echo trans('comment.email'); ?></label>
+            : <?php echo $comment['email']; ?>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div clase="from-group">
+            <label for="news"><?php echo trans('comment.news'); ?></label>
+            : <?php echo $comment['news_id']; ?>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div clase="from-group">
+            <label for="status"><?php echo trans('comment.status'); ?></label>
+            : <?php echo  trans('comment.'.$comment['status']) ; ?>
+        </div>
+    </div>
+    <div class="col-md-24">
+        <div clase="from-group">
+            <label for="comment"><?php echo trans('comment.comment'); ?></label>
+            : <?php echo $comment['comment']; ?>
+        </div>
+    </div>
+</div>
+<?php
+view('admin.layouts.footer');
+?>

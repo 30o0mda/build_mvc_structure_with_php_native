@@ -2,7 +2,7 @@
 
 
 
-$comments = db_paginate('comments', 'where news_id="' . request('id') . '"',3,'asc', '*', [
+$comments = db_paginate('comments', 'where status="show" and news_id="' . request('id') . '"',5,'asc', '*', [
     'id' => request('id'),
 ]);
 // var_dump($comments);

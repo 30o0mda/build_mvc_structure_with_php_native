@@ -144,7 +144,7 @@ if (!function_exists('render_paginate')) {
         </li>';
 
         for ($i = 1; $i <= $total_page; $i++) {
-            $active = !empty(request('page')) && request('page') == $i ? 'active' : '';
+            $active = (!empty(request('page')) && request('page') == $i ) || ($i == 1 && empty(request('page')))? 'active' : '';
             $html .= '<li class="page-item ' . $active .'"><a href="?'.$request_str . $i . '" class="page-link">' . $i . '</a></li>';
         }
         $n_disabled = !empty(request('page')) && request('page') == $total_page ? 'disabled' : '';
@@ -157,7 +157,7 @@ if (!function_exists('render_paginate')) {
             </a>
         </li>';
         $html .= '</ul>';
-        return $html;
+        return $total_page >0? $html:'';
     }
 }
 
