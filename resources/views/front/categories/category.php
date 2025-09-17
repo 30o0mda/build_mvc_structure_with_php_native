@@ -39,9 +39,9 @@
                         <div class="col-auto d-none d-lg-block">
                             <?php
                             if(!empty($row['image'])){
-                                $img = url('storage/'.$row['image']);
+                                $img = url('storage/files/'.$row['image']);
                             }elseif(!empty($category['icon'])){
-                                $img = url('storage/'.$category['icon']);
+                                $img = url('storage/files/'.$category['icon']);
                             }else{
                                 $img = url('assets/front/image/icon.png');
                             }

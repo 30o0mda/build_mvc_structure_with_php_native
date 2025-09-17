@@ -32,7 +32,7 @@ categories.name as category_name"
                     <hr>
                     <?php
                     if (!empty($news['image'])) {
-                        $img = url('storage/' . $news['image']);
+                        $img = url('storage/files/' . $news['image']);
                     } else {
                         $img = url('assets/front/image/icon.png');
                     }

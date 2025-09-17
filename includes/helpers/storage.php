@@ -20,7 +20,7 @@ if (!function_exists('storage')) {
 if (!function_exists('storage_url')) {
     function storage_url(string $path = null):String
     {
-        return !empty($path) ? url('storage/' . $path) : '';
+        return !empty($path) ? url('storage/files/' . $path) : '';
     }
 }
 

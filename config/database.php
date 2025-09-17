@@ -2,8 +2,8 @@
 return [
     'servername' => "localhost",
     'port' => 3306,
-    'username' => "root",
-    'password' => "",//لو شغال على قاعدة بيانات الباس بيكون صفر
+    'username' => "emad",
+    'password' => "Emad@123",//لو شغال على قاعدة بيانات الباس بيكون صفر
     'database' => "project_one"
 ];
     

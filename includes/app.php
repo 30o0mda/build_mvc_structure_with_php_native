@@ -35,6 +35,7 @@ if(!$connection) {
 
 
 
+
 require_once base_path("/routes/web.php");
 require_once base_path("/includes/exception_error.php");
 
