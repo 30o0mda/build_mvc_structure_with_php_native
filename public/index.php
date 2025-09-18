@@ -61,8 +61,16 @@ require_once __DIR__ . "/../includes/app.php";
 
 // echo $hashedPassword;
 
-delete_file('storage/images/img.png');
+// delete_file('storage/images/img.png');
+if(config('database.strict') === true){
+  db_setting_strict();
+}
+
 route_init();
+
+if(config('database.strict') === true){
+  db_setting_strict();
+}
 
 if (!empty($GLOBALS['query'])) {
     mysqli_free_result($GLOBALS['query']);

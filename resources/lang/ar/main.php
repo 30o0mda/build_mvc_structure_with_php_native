@@ -25,5 +25,7 @@ return [
     'comments' => 'التعليقات',
     'no_comments' => 'لا توجد تعليقات',
     'news_id' => 'الأخبار',
+    'archives' => 'الارشيف',
+    'latest_news' => 'اخر الاخبار',
 
 ];

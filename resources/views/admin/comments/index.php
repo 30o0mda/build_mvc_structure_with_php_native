@@ -1,7 +1,7 @@
 <?php
 view('admin.layouts.header', ['titel' => trans('admin.comments')]);
 
-$comments = db_paginate('comments', "join news on comments.news_id = news.id ", 12,"asc","
+$comments = db_paginate('comments', "join news on comments.news_id = news.id ", 10,"asc","
 comments.id,
 comments.name,
 comments.email,

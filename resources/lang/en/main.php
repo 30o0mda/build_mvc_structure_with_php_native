@@ -25,6 +25,8 @@ return [
     'comments' => 'Comments',
     'no_comments' => 'No Comments',
     'news_id' => 'News',
+    'archives' => 'Archives',
+    'latest_news' => 'Latest News',
 
 
 
